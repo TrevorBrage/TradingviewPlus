@@ -21,7 +21,6 @@ class ZoomChart extends Feature {
     ]);
   }
 
-
   onMouseDown() {};
 
   onMouseMove() {};
@@ -34,18 +33,18 @@ class ZoomChart extends Feature {
   }
 
   // TODO
-  // Fix "checkTrigger" to allow for meta keys ( shift, ctrl, etc )
+  // Fix "checkTrigger" to allow for meta keys (shift, ctrl, etc)
   // instead of having to hardcode it like this
-
   onKeyDown(e: KeyboardEvent) {
-    const condition = (e.key == "Shift" && e.ctrlKey) || (e.key == "Control" && e.shiftKey);
-    if (condition && this.isEnabled()) {
+    const isShiftCtrl = (e.key === "Shift" && e.ctrlKey) || (e.key === "Control" && e.shiftKey);
+    if (isShiftCtrl && this.isEnabled()) {
       this.triggerDown = true;
     }
   }
 
+  // Added handling for both Shift and Control keys
   onKeyUp(e: KeyboardEvent) {
-    if (e.key == "Shift" || e.key == "Control") {
+    if (e.key === "Shift" || e.key === "Control") {
       this.triggerDown = false;
     }
   }

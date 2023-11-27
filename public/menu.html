@@ -9,23 +9,30 @@
       <input type="text">
     </div>
 
-    <div class="accordion">
-
-      <!-- Accordion for TVP features -->
-      <div class="tab">
-        <input type="checkbox" name="accordion-1" id="cb1" class='hidden-input' checked>
-        <h2><label for="cb1">Custom Features <svg width="28" height="10" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.64 0L24 18.32L42.36 0L48 5.64L24 29.64L0 5.64L5.64 0Z" fill="white"/></svg></label></h2>
-        <div class="feature" id="custom-dropdown-content-container">
-
+    <!-- Accordion for TVP features -->
+    <div class="tab">
+      <input type="checkbox" name="accordion-1" id="cb1" class='hidden-input' checked>
+      <h2><label for="cb1">Custom Features <svg width="28" height="10" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.64 0L24 18.32L42.36 0L48 5.64L24 29.64L0 5.64L5.64 0Z" fill="white"/></svg></label></h2>
+      <div class="feature" id="custom-dropdown-content-container">
+        <!-- Include appropriate UI for TVP hotkeys -->
+        <div class="tvp-hotkey-buttons">
+          <button class="tvp-hotkey-button">Edit Hotkey</button>
+          <!-- Add more buttons or representation as needed -->
         </div>
       </div>
-
-      <!-- Accordion for modified TV features -->
-      <div class="tab">
-        <input type="checkbox" name="accordion-2" id="cb2" class='hidden-input' checked>
-        <h2><label for="cb2">Tradingview Features <svg width="28" height="10" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.64 0L24 18.32L42.36 0L48 5.64L24 29.64L0 5.64L5.64 0Z" fill="white"/></svg></label></h2>
-        <div class="feature" id="tradingview-dropdown-content-container">
-
+    </div>
+  
+    <!-- Accordion for modified TV features  -->
+    <div class="tab">
+      <input type="checkbox" name="accordion-2" id="cb2" class='hidden-input' checked>
+      <h2><label for="cb2">Tradingview Features <svg width="28" height="10" viewBox="0 0 48 30" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.64 0L24 18.32L42.36 0L48 5.64L24 29.64L0 5.64L5.64 0Z" fill="white"/></svg></label></h2>
+      <div class="feature" id="tradingview-dropdown-content-container">
+        <!-- Include appropriate UI for TV hotkeys -->
+        <div class="tv-hotkey-buttons">
+          <button class="tv-hotkey-button">Ctrl</button>
+          <button class="tv-hotkey-button">Shift</button>
+          <button class="tv-hotkey-button">Alt</button>
+          <!-- Add more buttons for other modifiers -->
         </div>
       </div>
 
