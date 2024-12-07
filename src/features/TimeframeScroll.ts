@@ -4,7 +4,7 @@ class TimeframeScroll extends Feature {
   constructor() {
     super(
       'Scroll Timeframes',
-      'Allows you to scroll timeframes using a modifier + scroll wheel',
+      'Allows you to scroll timeframes using a modifier + scroll wheel or the [ ] keys',
       true,
       {
         key: 'Tab',
@@ -15,12 +15,11 @@ class TimeframeScroll extends Feature {
       },
       Category.TVP,
       false,
-      ["Tab", "Scroll"]
+      ["Tab", "Scroll", "[", "]"]
     );
     this.addContextMenuOptions([
     ]);
   }
-
 
   onMouseDown() {};
 
@@ -53,17 +52,46 @@ class TimeframeScroll extends Feature {
     }
   }
 
-  // TODO
-  // Fix "checkTrigger" to allow for meta keys ( shift, ctrl, etc )
-  // instead of having to hardcode it like this
   onKeyDown(e: KeyboardEvent) {
     if (this.checkTrigger(e)) {
       this.triggerDown = true;
+    }
+
+    // Check for '[' or ']' key for scrolling up or down
+    let direction: number | undefined;
+    if (e.key === '[') {
+      direction = -1; // Scroll up
+    } else if (e.key === ']') {
+      direction = 1; // Scroll down
+    }
+
+    if (direction !== undefined) {
+      const timeframeButtons = Array.from(document.querySelectorAll('#header-toolbar-intervals > div button'));
+
+      // Get current timeframe
+      const currentTimeframe = document.querySelector('#header-toolbar-intervals div button[class*="isActive"]')?.textContent;
+      if (currentTimeframe == null) return;
+
+      // Get index of current active timeframe in array
+      const currentTimeframeIndex = timeframeButtons.map(e => e.className.includes('isActive')).indexOf(true);
+
+      // Calculate new timeframe index based on key press
+      const newTimeframeIndex = currentTimeframeIndex + direction;
+
+      // Click the calculated button
+      if (newTimeframeIndex > -1 && newTimeframeIndex < timeframeButtons.length-1) {
+        (timeframeButtons[newTimeframeIndex] as HTMLElement).click();
+      }
     }
   }
 
   onKeyUp(e: KeyboardEvent) {
     if (this.checkTrigger(e)) {
+      this.triggerDown = false;
+    }
+
+    // Release trigger on key up for '[' or ']'
+    if (e.key === '[' || e.key === ']') {
       this.triggerDown = false;
     }
   }

@@ -8,7 +8,7 @@ class CopyPrice extends Feature {
       true,
       {
         key: 'c',
-        ctrl: false,
+        ctrl: true, // Set default to Ctrl + C
         shift: false,
         alt: false,
         meta: false
@@ -55,5 +55,6 @@ class CopyPrice extends Feature {
         })
       }
   };
+
   init() {}
 }
